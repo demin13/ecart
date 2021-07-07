@@ -38,7 +38,8 @@
                             <form action="" method="POST">
                               {% csrf_token %}
                               <input hidden name="product" type="text" value='{{dat.id}}'>
-                              <input type="submit" class="btn btn-primary mt-5" value="Add to Cart"/>
+                              <span><input type="submit" class="btn btn-primary mt-5" value="Add to Cart"/></span>
+                              <span><input type="submit" class="btn btn-primary mt-5" value="Buy"/></span>
                               <!-- <button class="btn btn-primary">Buy</button> -->
                             </form>
                             </div>
