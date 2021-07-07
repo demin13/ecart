@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="p-4 m-4">
+        <div class="col-lg-5 mt-4 mb-4 mx-auto border rounded p-4">
+            <form action="/login" method="POST"> {% csrf_token %}
+                
+            <div class="form-group">
+                <h3>Login</h3>
+                <hr>
+                {% if error %}
+                <div class="alert alert-danger" role="alertdialog">
+                    {{error}}
+                </div>
+                {% endif %}
+                <label for="emailid">Email</label>
+                <input type="email" name="email" id="" autocomplete required class="form-control"/>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="" class="form-control"/>
+                <input type="submit" name="submit" value="Login" class="form-control btn btn-success mt-2"/>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

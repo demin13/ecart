@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <head>
+          <title>Home</title>
+        </head>
+        <div class="container-fluid mt-5">
+            <div class="row">
+            <div class="col-3">
+              {% for data in categories %}
+                <div class="list-group">
+                    <a href="?category={{data.id}}" class="list-group-item list-group-item-action ">{{data.name}}</a>
+                </div>
+                {% endfor %}
+                </div>
+            <div class="col-6">
+            {% for dat in products %}
+            <div class="row mx-auto">
+                <div class="col-12">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                          <div class="col-md-6">
+                            <img src="/images/{{dat.images}}" class="img-fluid rounded-start" alt="test" >
+                          </div>
+                          <div class="col-md-6">
+                            <div class="card-body">
+                              <h5 class="card-title">{{dat.name}}</h5>
+                              <span class="card-text" style="color: rgba(119, 102, 119, 0.6);" id="price1">
+                                  <s>&#8377;{{dat.price}}</s>
+                                  </span>
+                                  <span>{{dat.discount}}%</span>
+                          
+                                    <h5 class="card-text" style="color: rgb(15, 83, 43);" id="finalprice">&#8377;{{dat.price}}</h5>
+                              
+                              <p class="card-text">{{dat.description}}</p>
+                              <p hidden class="card-text"><small class="text-muted">{{dat.category.name}}</small></p>
+                              
+                            <form action="" method="POST">
+                              {% csrf_token %}
+                              <input hidden name="product" type="text" value='{{dat.id}}'>
+                              <input type="submit" class="btn btn-primary mt-5" value="Add to Cart"/>
+                              <!-- <button class="btn btn-primary">Buy</button> -->
+                            </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+       </div>
+        </div>
+
+
+        <script>
+            var price1 = "{{dat.price}}";
+            var dis = "{{dat.discount}}";
+            var f_price = price1 - (price1 * 0.01 * dis);
+            </script>
+{% endblock %}

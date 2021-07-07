@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <title>Signup</title>
+  </head>
+<div class="container">
+    <div class="p-4 m-4">
+        <div class="col-lg-5 mx-auto border rounded p-3">
+            <form action="/signup" method="POST"> {% csrf_token %}
+                
+            <div class="form-group">
+                <h3>Create New Account</h3>
+                <hr>
+                {% if error %}
+                <div class="alert alert-danger" role="alertdialog">
+                    {{error}}
+                </div>
+                {% endif %}
+                <label for="fname">First Name</label>
+                <input type="text" value="{{filledvalues.fname}}" name="fname" id="" class="form-control"/>
+                <label for="sname">Second Name</label>
+                <input type="text" value="{{filledvalues.sname}}" name="sname" id="" class="form-control">
+                <label for="phone">Mobile No</label>
+                <input type="tel" value="{{filledvalues.phone}}" name="phone" id="" class="form-control"/>
+                <label for="emailid">Email</label>
+                <input type="email" value="{{filledvalues.email}}" name="email" id="" autocomplete required class="form-control"/>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="" class="form-control"/>
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" name="confirmpassword" id="" class="form-control"/>
+                <input type="submit" name="submit" value="Register" class="form-control btn btn-success mt-2"/>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
